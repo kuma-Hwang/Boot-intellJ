@@ -1,16 +1,24 @@
 package com.company.firstproject.dto;
 
 import com.company.firstproject.entity.Article;
-import lombok.AllArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
+@NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@Getter
 @ToString
 public class ArticleForm {
-    private String title; //제목을 받을 필드
-    private String content; //내용을 받을 필드
+    private Long id;
+    private String title;
+    private String content;
 
-    public Article toEntity() {
+    public Article toNoIdEntity() {
         return new Article(null, title, content);
     }
+
+    public Article toEntity() {
+        return new Article(id, title, content);
+    }
 }
+
